@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turnos</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0b0d14" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="top">
+      <h1 class="brand">Turnos</h1>
+      <div class="subtitle">Asistente de rondas</div>
+    </header>
+
+    <main class="panel">
+      <div class="panel-head">
+        <h2 id="screenTitle">Cargando…</h2>
+        <p id="screenHint"></p>
+      </div>
+
+      <div id="content" class="panel-body"></div>
+
+      <div id="panelFoot" class="panel-foot"></div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-title" id="modalTitle">Título</div>
+      <div class="modal-text" id="modalText">Texto</div>
+
+      <div class="modal-actions">
+        <!-- Para el “Revelar carta”: -->
+        <button id="modalSecondary" class="btn">Devolver</button>
+        <button id="modalPrimary" class="btn primary">Mandar al fondo</button>
+
+        <!-- Para mensajes simples: -->
+        <button id="modalOk" class="btn primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Service worker (PWA)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
+

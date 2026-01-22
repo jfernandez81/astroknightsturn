@@ -1,0 +1,256 @@
+/* styles.css — versión estable (no rompe tu HTML + incluye modal) */
+
+/* Reset */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+
+/* Fondo y texto */
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #e9e9f5;
+  background: radial-gradient(1200px 900px at 50% 0%, #1a1b2a, #070711);
+}
+
+/* Layout general */
+.app{
+  width: min(1050px, 92vw);
+  margin: 40px auto;
+}
+
+header.top{
+  margin-bottom: 16px;
+}
+
+.brand{
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 0.4px;
+}
+
+.subtitle{
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+/* Paneles */
+.panel{
+  background: rgba(15, 15, 28, 0.65);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  box-shadow: 0 18px 70px rgba(0,0,0,0.40);
+  backdrop-filter: blur(10px);
+}
+
+.panel-head{
+  padding: 18px 18px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.panel-head h2{
+  margin: 0 0 6px;
+  font-size: 26px;
+}
+
+.panel-head p{
+  margin: 0;
+  opacity: 0.8;
+}
+
+.panel-body{
+  padding: 16px 18px;
+}
+
+.panel-foot{
+  padding: 14px 18px 18px;
+}
+
+/* Botones */
+.btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: #f1f1ff;
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .06s ease, background .12s ease, border-color .12s ease;
+  user-select: none;
+}
+
+.btn:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn.primary{
+  background: rgba(120, 120, 255, 0.22);
+  border-color: rgba(120, 120, 255, 0.40);
+}
+
+/* IMPORTANTE: separación entre botones (tu problema 1) */
+.actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Grids */
+.grid{
+  display: grid;
+  gap: 12px;
+}
+
+/* Héroes: 4 y 4 (tu problema 4) */
+.grid-heroes{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Bosses: 5 visibles (4 + 1, pero todos clicables) */
+.grid-bosses{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px){
+  .grid-heroes{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-bosses{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tiles (mosaicos) */
+.pick{
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: transform .08s ease, border-color .12s ease, background .12s ease;
+}
+
+.pick:hover{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.pick.selected{
+  border-color: rgba(130, 130, 255, 0.58);
+  box-shadow: 0 0 0 2px rgba(130, 130, 255, 0.16) inset;
+}
+
+.pick img{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover; /* evita deformaciones */
+}
+
+.pick-name{
+  padding: 10px 10px;
+  font-weight: 650;
+  opacity: 0.95;
+}
+
+/* Pantalla de juego */
+.round-info{
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.card-wrap{
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.card-click{
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.card-click img{
+  width: min(420px, 70vw);
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.40);
+}
+
+.card-placeholder{
+  width: min(420px, 70vw);
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  display: grid;
+  place-items: center;
+  opacity: 0.75;
+}
+
+.card-label{
+  margin-top: 10px;
+  text-align: center;
+  opacity: 0.9;
+  font-weight: 650;
+}
+
+/* “Revelar carta” (preview) — tu problema 3 */
+.card-click.is-peek img{
+  width: min(320px, 62vw);
+  opacity: 0.65;
+  transform: scale(0.96);
+  filter: saturate(0.9);
+}
+
+.peek-badge{
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  opacity: 0.78;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Modal/Overlay (esto era lo que te ha explotado y aparecía a la izquierda) */
+.hidden{ display:none !important; }
+
+#overlay.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.modal{
+  width: min(520px, 92vw);
+  background: rgba(15, 15, 28, 0.92);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  padding: 16px 16px 12px;
+}
+
+.modal-title{
+  font-weight: 750;
+  margin-bottom: 6px;
+}
+
+.modal-text{
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.modal-actions{
+  display:flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
