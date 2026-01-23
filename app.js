@@ -156,7 +156,7 @@
   // ===== Pantalla 1: nº jugadores =====
   function renderPlayers() {
     state.step = "players";
-    setScreen("Turnos", "¿Cuántos jugadores? Elige 2, 3 o 4.");
+    setScreen("Selección de jugadores", "Selecciona el número de jugadores.");
 
     const actions = el("div", { class: "actions" },
       btn("2 jugadores", { kind: state.playerCount === 2 ? "primary" : "", onClick: () => { state.playerCount = 2; renderPlayers(); } }),
@@ -178,7 +178,7 @@
   // ===== Pantalla 2: héroes =====
   function renderHeroPick() {
     state.step = "heroes";
-    setScreen("Elige personajes", `Selecciona ${state.playerCount} personaje(s).`);
+    setScreen("Selección de personajes", `Selecciona ${state.playerCount} personajes.`);
 
     const grid = el("div", { class: "grid grid-heroes" });
 
@@ -223,7 +223,7 @@
   // ===== Pantalla 3: bosses =====
   function renderBossPick() {
     state.step = "boss";
-    setScreen("Elige jefe", "Selecciona el jefe para la partida.");
+    setScreen("Selección del Jefe", "Selecciona el Jefe.");
 
     const grid = el("div", { class: "grid grid-bosses" });
 
@@ -447,4 +447,5 @@
   // Boot
   renderPlayers();
 })();
+
 
