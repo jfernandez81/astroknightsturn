@@ -149,9 +149,11 @@ header.top{
 }
 
 .pick-name{
+  color: #ffffff;
   padding: 10px 10px;
   font-weight: 650;
   opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
 /* Pantalla de juego */
@@ -254,3 +256,4 @@ header.top{
   justify-content: flex-end;
   flex-wrap: wrap;
 }
+
