@@ -39,11 +39,11 @@
 
   // Orden de aparición: Colossus, Hive, Oracle, Bastion, Knight
   const BOSSES = [
-    { id: "colossus", name: "Colossus", img: "assets/bosses/colossus.png" },
-    { id: "hive",     name: "Hive",     img: "assets/bosses/hive.png" },
-    { id: "oracle",   name: "Oracle",   img: "assets/bosses/oracle.png" },
-    { id: "bastion",  name: "Bastion",  img: "assets/bosses/bastion.png" },
-    { id: "knight",   name: "Knight",   img: "assets/bosses/knight.png" },
+    { id: "colossus", name: "Coloso", img: "assets/bosses/colossus.png" },
+    { id: "hive",     name: "Colmena",     img: "assets/bosses/hive.png" },
+    { id: "oracle",   name: "Oráculo",   img: "assets/bosses/oracle.png" },
+    { id: "bastion",  name: "Bastión",  img: "assets/bosses/bastion.png" },
+    { id: "knight",   name: "Caballero",   img: "assets/bosses/knight.png" },
   ];
 
   // ===== Estado =====
@@ -51,7 +51,7 @@
     step: "players",
     playerCount: 2,
     selectedHeroIds: [],
-    selectedBossId: "hive",
+    selectedBossId: null,
 
     round: 1,
     deck: [],
@@ -131,7 +131,7 @@
     state.step = "players";
     state.playerCount = 2;
     state.selectedHeroIds = [];
-    state.selectedBossId = "hive";
+    state.selectedBossId = null;
 
     state.round = 1;
     state.deck = [];
@@ -447,3 +447,4 @@
   // Boot
   renderPlayers();
 })();
+
